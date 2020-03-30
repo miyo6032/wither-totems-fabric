@@ -11,6 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.gen.feature.Feature;
 
 public class TotemMod implements ModInitializer
 {
@@ -19,6 +25,7 @@ public class TotemMod implements ModInitializer
     public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f).nonOpaque().build());
     public static BlockEntityType<TotemBlockEntity> TOTEM_BLOCK_ENTITY;
     public static StatusEffect LOOTING;
+    private static final Feature<DefaultFeatureConfig> TOTEM = Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), new TotemFeature(DefaultFeatureConfig::deserialize));
 
     @Override
     public void onInitialize()
@@ -32,5 +39,12 @@ public class TotemMod implements ModInitializer
 	TOTEM_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "totemmod:totem", BlockEntityType.Builder.create(TotemBlockEntity::new, TOTEM_TOP).build(null));
 
 	LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:effect", new LootingStatusEffect());
+
+	Registry.BIOME.forEach(biome -> {
+	    if (biome == Biomes.NETHER)
+	    {
+		biome.addFeature(GenerationStep.Feature.RAW_GENERATION, TOTEM.configure(new DefaultFeatureConfig()).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(100))));
+	    }
+	});
     }
 }
