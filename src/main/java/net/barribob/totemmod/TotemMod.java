@@ -15,8 +15,8 @@ import net.minecraft.util.registry.Registry;
 public class TotemMod implements ModInitializer
 {
 
-    public static final Block TOTEM_BASE = new TotemBase(FabricBlockSettings.of(Material.STONE).build());
-    public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).nonOpaque().build());
+    public static final Block TOTEM_BASE = new TotemBase(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f).build());
+    public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f).nonOpaque().build());
     public static BlockEntityType<TotemBlockEntity> TOTEM_BLOCK_ENTITY;
     public static StatusEffect LOOTING;
 
