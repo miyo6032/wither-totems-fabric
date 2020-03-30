@@ -4,9 +4,11 @@ import java.util.List;
 
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.WitherSkeletonEntity;
+import net.minecraft.entity.mob.Monster;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Tickable;
 import net.minecraft.util.math.Box;
 
@@ -40,10 +42,14 @@ public class TotemBlockEntity extends BlockEntity implements Tickable
 	List<Entity> mobs = this.world.getEntities(null, box);
 	for (Entity mob : mobs)
 	{
-	    if (mob instanceof WitherSkeletonEntity)
+	    if (mob instanceof Monster && mob instanceof LivingEntity)
 	    {
-		((WitherSkeletonEntity) mob).addStatusEffect(new StatusEffectInstance(TotemMod.LOOTING, 40, 1));
-		((WitherSkeletonEntity) mob).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 40, 0));
+		((LivingEntity) mob).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 40, 1));
+		((LivingEntity) mob).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 40, 0));
+	    }
+	    else if (mob instanceof PlayerEntity)
+	    {
+		((PlayerEntity) mob).addStatusEffect(new StatusEffectInstance(TotemMod.LOOTING, 100, 1));
 	    }
 	}
     }
