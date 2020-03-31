@@ -1,5 +1,6 @@
 package net.barribob.totemmod;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -7,6 +8,7 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,8 +18,11 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -119,5 +124,14 @@ public class TotemTop extends BlockWithEntity
     public BlockEntity createBlockEntity(BlockView view)
     {
 	return new TotemBlockEntity();
+    }
+
+    @Override
+    public void buildTooltip(ItemStack stack, BlockView view, List<Text> tooltip, TooltipContext options)
+    {
+	tooltip.add(new TranslatableText("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
+	tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
+	tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
+	super.buildTooltip(stack, view, tooltip, options);
     }
 }
