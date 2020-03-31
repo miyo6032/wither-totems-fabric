@@ -23,7 +23,6 @@ public class EnchantmentHelperMixin
 	    return;
 	}
 
-	System.out.println(info.getReturnValueI());
 	info.setReturnValue(info.getReturnValueI() + 2);
     }
 }

@@ -4,9 +4,9 @@
   "package": "net.barribob.totemmod.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+      "EnchantmentHelperMixin"
   ],
   "client": [
-    "EnchantmentHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
