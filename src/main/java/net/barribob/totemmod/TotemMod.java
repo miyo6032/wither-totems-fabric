@@ -38,7 +38,7 @@ public class TotemMod implements ModInitializer
 
 	TOTEM_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "totemmod:totem", BlockEntityType.Builder.create(TotemBlockEntity::new, TOTEM_TOP).build(null));
 
-	LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:effect", new LootingStatusEffect());
+	LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:looting", new LootingStatusEffect());
 
 	Registry.BIOME.forEach(biome -> {
 	    if (biome == Biomes.NETHER)
