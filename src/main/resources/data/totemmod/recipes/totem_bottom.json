@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SRS",
+    "sss"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:cobblestone"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "s": {
+      "item": "minecraft:cobblestone_slab"
+    }
+  },
+  "result": {
+    "item": "totemmod:totem_base"
+  }
+}
