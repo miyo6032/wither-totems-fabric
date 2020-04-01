@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class TotemBase extends Block
 {
     protected static VoxelShape BOTTOM_TOTEM_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
-    protected static VoxelShape TOP_TOTEM_SHAPE = Block.createCuboidShape(4.0D, 2.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    protected static VoxelShape TOP_TOTEM_SHAPE = Block.createCuboidShape(5.0D, 2.0D, 5.0D, 11.0D, 16.0D, 11.0D);
     protected static VoxelShape TOTEM_SHAPE = VoxelShapes.union(BOTTOM_TOTEM_SHAPE, TOP_TOTEM_SHAPE);
 
     public TotemBase(Settings settings)
