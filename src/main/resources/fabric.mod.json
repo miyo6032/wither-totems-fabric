@@ -1,18 +1,19 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
-	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"id": "totemmod",
+	"version": "0.2",
+	"name": "Wither Totems Mod",
+	"description": "Adds totems that increase loot and increase danger.",
 	"authors": [
-		"Me!"
+		"Barribob"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/wither-totem",
+		"sources": "https://github.com/miyo6032/wither-totems-fabric",
+		"issues": "https://github.com/miyo6032/wither-totems-fabric/issues"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/totemmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
