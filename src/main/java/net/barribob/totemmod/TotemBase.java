@@ -17,15 +17,13 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class TotemBase extends Block
-{
+public class TotemBase extends Block {
     protected static VoxelShape BOTTOM_TOTEM_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
     protected static VoxelShape TOP_TOTEM_SHAPE = Block.createCuboidShape(5.0D, 2.0D, 5.0D, 11.0D, 16.0D, 11.0D);
     protected static VoxelShape TOTEM_SHAPE = VoxelShapes.union(BOTTOM_TOTEM_SHAPE, TOP_TOTEM_SHAPE);
 
-    public TotemBase(Settings settings)
-    {
-	super(settings);
+    public TotemBase(Settings settings) {
+        super(settings);
     }
 
     @Override
@@ -39,21 +37,18 @@ public class TotemBase extends Block
     }
 
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player)
-    {
-	if (world.getBlockState(pos.up()).getBlock().equals(TotemMod.TOTEM_TOP))
-	{
-	    world.breakBlock(pos.up(), true);
-	}
-	super.onBreak(world, pos, state, player);
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (world.getBlockState(pos.up()).getBlock().equals(TotemMod.TOTEM_TOP)) {
+            world.breakBlock(pos.up(), true);
+        }
+        super.onBreak(world, pos, state, player);
     }
 
     @Override
-    public void buildTooltip(ItemStack stack, BlockView view, List<Text> tooltip, TooltipContext options)
-    {
-	tooltip.add(new TranslatableText("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
-	tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
-	tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
-	super.buildTooltip(stack, view, tooltip, options);
+    public void buildTooltip(ItemStack stack, BlockView view, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(new TranslatableText("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
+        tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
+        tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
+        super.buildTooltip(stack, view, tooltip, options);
     }
 }

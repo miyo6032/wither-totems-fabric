@@ -18,32 +18,29 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
-public class TotemMod implements ModInitializer
-{
+public class TotemMod implements ModInitializer {
     public static final Block TOTEM_BASE = new TotemBase(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
     public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
+    private static final Feature<DefaultFeatureConfig> TOTEM = Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), new TotemFeature(DefaultFeatureConfig.CODEC));
     public static BlockEntityType<TotemBlockEntity> TOTEM_BLOCK_ENTITY;
     public static StatusEffect LOOTING;
-    private static final Feature<DefaultFeatureConfig> TOTEM = Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), new TotemFeature(DefaultFeatureConfig.CODEC));
 
     @Override
-    public void onInitialize()
-    {
-	Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_base"), TOTEM_BASE);
-	Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_top"), TOTEM_TOP);
+    public void onInitialize() {
+        Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_base"), TOTEM_BASE);
+        Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_top"), TOTEM_TOP);
 
-	Registry.register(Registry.ITEM, new Identifier("totemmod", "totem_top"), new BlockItem(TOTEM_TOP, new Item.Settings().group(ItemGroup.MISC)));
-	Registry.register(Registry.ITEM, new Identifier("totemmod", "totem_base"), new BlockItem(TOTEM_BASE, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("totemmod", "totem_top"), new BlockItem(TOTEM_TOP, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("totemmod", "totem_base"), new BlockItem(TOTEM_BASE, new Item.Settings().group(ItemGroup.MISC)));
 
-	TOTEM_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "totemmod:totem", BlockEntityType.Builder.create(TotemBlockEntity::new, TOTEM_TOP).build(null));
+        TOTEM_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "totemmod:totem", BlockEntityType.Builder.create(TotemBlockEntity::new, TOTEM_TOP).build(null));
 
-	LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:looting", new LootingStatusEffect());
+        LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:looting", new LootingStatusEffect());
 
-	Registry.BIOME.forEach(biome -> {
-	    if (biome.getCategory() == Biome.Category.NETHER)
-	    {
-		biome.addFeature(GenerationStep.Feature.RAW_GENERATION, TOTEM.configure(new DefaultFeatureConfig()).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(100))));
-	    }
-	});
+        Registry.BIOME.forEach(biome -> {
+            if (biome.getCategory() == Biome.Category.NETHER) {
+                biome.addFeature(GenerationStep.Feature.RAW_GENERATION, TOTEM.configure(new DefaultFeatureConfig()).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(100))));
+            }
+        });
     }
 }

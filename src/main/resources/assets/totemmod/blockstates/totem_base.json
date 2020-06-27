@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"": {
-			"model": "totemmod:block/totem_base"
-		}
-	}
+  "variants": {
+    "": {
+      "model": "totemmod:block/totem_base"
+    }
+  }
 }

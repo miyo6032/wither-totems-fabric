@@ -1,81 +1,301 @@
 {
-	"credit": "Made with Blockbench",
-	"textures": {
-		"3": "totemmod:block/invisible",
-		"4": "totemmod:block/totem_top",
-		"5": "minecraft:entity/skeleton/wither_skeleton",
-		"particle": "minecraft:entity/skeleton/wither_skeleton"
-	},
-	"elements": [
-		{
-			"name": "pedestal6",
-			"from": [5, 0, 5],
-			"to": [11, 8, 11],
-			"faces": {
-				"north": {"uv": [3, 3, 6, 7], "texture": "#4"},
-				"east": {"uv": [0, 3, 3, 7], "texture": "#4"},
-				"south": {"uv": [9, 3, 12, 7], "texture": "#4"},
-				"west": {"uv": [6, 3, 9, 7], "texture": "#4"},
-				"up": {"uv": [6, 3, 3, 0], "texture": "#4"},
-				"down": {"uv": [9, 0, 6, 3], "texture": "#4"}
-			}
-		},
-		{
-			"name": "head",
-			"from": [4, 8, 4],
-			"to": [12, 16, 12],
-			"faces": {
-				"north": {"uv": [2, 4, 4, 8], "texture": "#5"},
-				"east": {"uv": [0, 4, 2, 8], "texture": "#5"},
-				"south": {"uv": [6, 4, 8, 8], "texture": "#5"},
-				"west": {"uv": [4, 4, 6, 8], "texture": "#5"},
-				"up": {"uv": [2, 0, 4, 4], "texture": "#5"},
-				"down": {"uv": [4, 0, 6, 4], "texture": "#5"}
-			}
-		},
-		{
-			"name": "eyes",
-			"from": [4, 8, 3.9],
-			"to": [12, 16, 3.9],
-			"faces": {
-				"north": {"uv": [0.5, 0.5, 4.5, 4.5], "texture": "#3"},
-				"east": {"uv": [0, 0.5, 0.5, 4.5], "texture": "#3"},
-				"south": {"uv": [5, 0.5, 9, 4.5], "texture": "#3"},
-				"west": {"uv": [4.5, 0.5, 5, 4.5], "texture": "#3"},
-				"up": {"uv": [4.5, 0.5, 0.5, 0], "texture": "#3"},
-				"down": {"uv": [8.5, 0, 4.5, 0.5], "texture": "#3"}
-			}
-		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 2, 0],
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 2, 0],
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"firstperson_righthand": {
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"firstperson_lefthand": {
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"ground": {
-			"translation": [0, 2, 0],
-			"scale": [0.25, 0.25, 0.25]
-		},
-		"gui": {
-			"rotation": [30, 135, 0],
-			"scale": [0.7, 0.7, 0.7]
-		},
-		"head": {
-			"translation": [0, 12.75, 0]
-		},
-		"fixed": {
-			"translation": [0, -3.5, 0],
-			"scale": [0.5, 0.5, 0.5]
-		}
-	}
+  "credit": "Made with Blockbench",
+  "textures": {
+    "3": "totemmod:block/invisible",
+    "4": "totemmod:block/totem_top",
+    "5": "minecraft:entity/skeleton/wither_skeleton",
+    "particle": "minecraft:entity/skeleton/wither_skeleton"
+  },
+  "elements": [
+    {
+      "name": "pedestal6",
+      "from": [
+        5,
+        0,
+        5
+      ],
+      "to": [
+        11,
+        8,
+        11
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            3,
+            6,
+            7
+          ],
+          "texture": "#4"
+        },
+        "east": {
+          "uv": [
+            0,
+            3,
+            3,
+            7
+          ],
+          "texture": "#4"
+        },
+        "south": {
+          "uv": [
+            9,
+            3,
+            12,
+            7
+          ],
+          "texture": "#4"
+        },
+        "west": {
+          "uv": [
+            6,
+            3,
+            9,
+            7
+          ],
+          "texture": "#4"
+        },
+        "up": {
+          "uv": [
+            6,
+            3,
+            3,
+            0
+          ],
+          "texture": "#4"
+        },
+        "down": {
+          "uv": [
+            9,
+            0,
+            6,
+            3
+          ],
+          "texture": "#4"
+        }
+      }
+    },
+    {
+      "name": "head",
+      "from": [
+        4,
+        8,
+        4
+      ],
+      "to": [
+        12,
+        16,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            4,
+            4,
+            8
+          ],
+          "texture": "#5"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            2,
+            8
+          ],
+          "texture": "#5"
+        },
+        "south": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#5"
+        },
+        "west": {
+          "uv": [
+            4,
+            4,
+            6,
+            8
+          ],
+          "texture": "#5"
+        },
+        "up": {
+          "uv": [
+            2,
+            0,
+            4,
+            4
+          ],
+          "texture": "#5"
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            6,
+            4
+          ],
+          "texture": "#5"
+        }
+      }
+    },
+    {
+      "name": "eyes",
+      "from": [
+        4,
+        8,
+        3.9
+      ],
+      "to": [
+        12,
+        16,
+        3.9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            4.5,
+            4.5
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            4.5
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            5,
+            0.5,
+            9,
+            4.5
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            4.5,
+            0.5,
+            5,
+            4.5
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            4.5,
+            0.5,
+            0.5,
+            0
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            8.5,
+            0,
+            4.5,
+            0.5
+          ],
+          "texture": "#3"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "firstperson_righthand": {
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "firstperson_lefthand": {
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        135,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        12.75,
+        0
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -3.5,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  }
 }

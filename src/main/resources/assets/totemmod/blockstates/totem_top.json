@@ -1,12 +1,34 @@
 {
-    "variants": {
-        "facing=north,triggered=true": { "model": "totemmod:block/totem_top" },
-        "facing=south,triggered=true": { "model": "totemmod:block/totem_top", "y": 180 },
-        "facing=west,triggered=true":  { "model": "totemmod:block/totem_top", "y": 270 },
-        "facing=east,triggered=true":  { "model": "totemmod:block/totem_top", "y": 90 },
-        "facing=north,triggered=false": { "model": "totemmod:block/totem_top_unactivated" },
-        "facing=south,triggered=false": { "model": "totemmod:block/totem_top_unactivated", "y": 180 },
-        "facing=west,triggered=false":  { "model": "totemmod:block/totem_top_unactivated", "y": 270 },
-        "facing=east,triggered=false":  { "model": "totemmod:block/totem_top_unactivated", "y": 90 }
+  "variants": {
+    "facing=north,triggered=true": {
+      "model": "totemmod:block/totem_top"
+    },
+    "facing=south,triggered=true": {
+      "model": "totemmod:block/totem_top",
+      "y": 180
+    },
+    "facing=west,triggered=true": {
+      "model": "totemmod:block/totem_top",
+      "y": 270
+    },
+    "facing=east,triggered=true": {
+      "model": "totemmod:block/totem_top",
+      "y": 90
+    },
+    "facing=north,triggered=false": {
+      "model": "totemmod:block/totem_top_unactivated"
+    },
+    "facing=south,triggered=false": {
+      "model": "totemmod:block/totem_top_unactivated",
+      "y": 180
+    },
+    "facing=west,triggered=false": {
+      "model": "totemmod:block/totem_top_unactivated",
+      "y": 270
+    },
+    "facing=east,triggered=false": {
+      "model": "totemmod:block/totem_top_unactivated",
+      "y": 90
     }
+  }
 }
