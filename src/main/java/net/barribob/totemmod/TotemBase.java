@@ -1,11 +1,9 @@
 package net.barribob.totemmod;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -16,6 +14,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class TotemBase extends Block
 {
@@ -29,15 +29,13 @@ public class TotemBase extends Block
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView view, BlockPos pos, EntityContext context)
-    {
-	return TOTEM_SHAPE;
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return TOTEM_SHAPE;
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext context)
-    {
-	return TOTEM_SHAPE;
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return TOTEM_SHAPE;
     }
 
     @Override

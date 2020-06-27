@@ -9,6 +9,6 @@ public class TotemModClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-	BlockRenderLayerMap.INSTANCE.putBlock(TotemMod.TOTEM_TOP, RenderLayer.getTranslucent());
+	    BlockRenderLayerMap.INSTANCE.putBlock(TotemMod.TOTEM_TOP, RenderLayer.getCutout());
     }
 }
