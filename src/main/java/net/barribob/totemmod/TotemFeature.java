@@ -23,7 +23,7 @@ public class TotemFeature extends Feature<DefaultFeatureConfig> {
 
     @Override
     public boolean generate(ServerWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig defaultFeatureConfig) {
-        pos = new BlockPos(pos.getX(), 255, pos.getZ());
+        pos = new BlockPos(pos.getX(), 120, pos.getZ());
 
         // Keep moving down until we find a valid position to place the totem
         while (!isValid(world, pos)) {
