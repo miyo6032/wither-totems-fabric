@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "totemmod",
-  "version": "0.3",
+  "version": "0.3.1",
   "name": "Wither Totems Mod",
   "description": "Adds totems that increase loot and increase danger.",
   "authors": [
