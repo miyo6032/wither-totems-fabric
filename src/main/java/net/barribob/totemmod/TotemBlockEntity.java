@@ -34,7 +34,7 @@ public class TotemBlockEntity extends BlockEntity implements Tickable {
         tickCounter = 19;
 
         Box box = new Box(pos).expand(15);
-        List<Entity> mobs = this.world.getEntities(null, box);
+        List<Entity> mobs = this.world.getOtherEntities(null, box);
         for (Entity mob : mobs) {
             if (mob instanceof Monster && mob instanceof LivingEntity) {
                 ((LivingEntity) mob).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 40, 1));

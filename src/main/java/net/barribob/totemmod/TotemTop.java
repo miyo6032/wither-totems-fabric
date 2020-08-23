@@ -103,10 +103,10 @@ public class TotemTop extends BlockWithEntity {
     }
 
     @Override
-    public void buildTooltip(ItemStack stack, BlockView view, List<Text> tooltip, TooltipContext options) {
+    public void appendTooltip(ItemStack stack, BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(new TranslatableText("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
         tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
         tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
-        super.buildTooltip(stack, view, tooltip, options);
+        super.appendTooltip(stack, world, tooltip, options);
     }
 }

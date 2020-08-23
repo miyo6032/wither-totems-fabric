@@ -11,17 +11,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class TotemMod implements ModInitializer {
     public static final Block TOTEM_BASE = new TotemBase(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
     public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
-    private static final Feature<DefaultFeatureConfig> TOTEM = Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), new TotemFeature(DefaultFeatureConfig.CODEC));
+    public static final ConfiguredFeature<?, ?> TOTEM_FEATURE =
+            Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), new TotemFeature(DefaultFeatureConfig.CODEC))
+                    .configure(FeatureConfig.DEFAULT)
+                    .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(100)));
+
     public static BlockEntityType<TotemBlockEntity> TOTEM_BLOCK_ENTITY;
     public static StatusEffect LOOTING;
 
@@ -36,11 +39,5 @@ public class TotemMod implements ModInitializer {
         TOTEM_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "totemmod:totem", BlockEntityType.Builder.create(TotemBlockEntity::new, TOTEM_TOP).build(null));
 
         LOOTING = Registry.register(Registry.STATUS_EFFECT, "totemmod:looting", new LootingStatusEffect());
-
-        Registry.BIOME.forEach(biome -> {
-            if (biome.getCategory() == Biome.Category.NETHER) {
-                biome.addFeature(GenerationStep.Feature.RAW_GENERATION, TOTEM.configure(new DefaultFeatureConfig()).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP.configure(new ChanceDecoratorConfig(100))));
-            }
-        });
     }
 }
