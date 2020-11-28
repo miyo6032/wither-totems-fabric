@@ -14,6 +14,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
@@ -30,6 +31,8 @@ public class TotemMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("totemmod", "wither_skeleton_totem"), TOTEM_FEATURE);
+
         Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_base"), TOTEM_BASE);
         Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_top"), TOTEM_TOP);
 
