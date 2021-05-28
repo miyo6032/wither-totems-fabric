@@ -5,15 +5,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-
-import java.util.Random;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 
 public class TotemFeature extends Feature<DefaultFeatureConfig> {
     public TotemFeature(Codec<DefaultFeatureConfig> codec) {
         super(codec);
+    }
+
+    @Override
+    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+        return generate(context.getWorld(), context.getOrigin());
     }
 
     private boolean isValid(ServerWorldAccess world, BlockPos pos) {
@@ -21,8 +24,7 @@ public class TotemFeature extends Feature<DefaultFeatureConfig> {
         return isSolidBlock && world.isAir(pos) && world.isAir(pos.up());
     }
 
-    @Override
-    public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos pos, DefaultFeatureConfig featureConfig) {
+    public boolean generate(StructureWorldAccess world, BlockPos pos) {
         pos = new BlockPos(pos.getX(), 120, pos.getZ());
 
         // Keep moving down until we find a valid position to place the totem

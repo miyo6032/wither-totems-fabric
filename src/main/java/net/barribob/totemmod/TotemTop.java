@@ -2,6 +2,8 @@ package net.barribob.totemmod;
 
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -18,10 +20,12 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Random;
@@ -76,7 +80,7 @@ public class TotemTop extends BlockWithEntity {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (world.getBlockState(pos).get(TRIGGERED)) {
-            world.addParticle(new DustParticleEffect(0.65f + 0.25f * random.nextFloat(), 0, 0, 1.0F),
+            world.addParticle(new DustParticleEffect(new Vec3f(0.65f + 0.25f * random.nextFloat(), 0, 0), 1.0F),
                     pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat(), pos.getZ() + random.nextFloat(),
                     0.0D, 0.0D, 0.0D);
         }
@@ -98,8 +102,8 @@ public class TotemTop extends BlockWithEntity {
     }
 
     @Override
-    public BlockEntity createBlockEntity(BlockView view) {
-        return new TotemBlockEntity();
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new TotemBlockEntity(pos, state);
     }
 
     @Override
@@ -108,5 +112,10 @@ public class TotemTop extends BlockWithEntity {
         tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
         tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
         super.appendTooltip(stack, world, tooltip, options);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, TotemMod.TOTEM_BLOCK_ENTITY, TotemBlockEntity::tick);
     }
 }
