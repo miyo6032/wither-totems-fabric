@@ -16,21 +16,18 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.decorator.BiomePlacementModifier;
+import net.minecraft.world.gen.decorator.RarityFilterPlacementModifier;
+import net.minecraft.world.gen.decorator.SquarePlacementModifier;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class TotemMod implements ModInitializer {
     public static final Block TOTEM_BASE = new TotemBase(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
     public static final Block TOTEM_TOP = new TotemTop(FabricBlockSettings.of(Material.STONE).hardness(1.5f).resistance(10f));
     private static final Feature<DefaultFeatureConfig> TOTEM_FEATURE = new TotemFeature(DefaultFeatureConfig.CODEC);
-    public static final ConfiguredFeature<?, ?> TOTEM_FEATURE_CONFIGURED = TOTEM_FEATURE
-                    .configure(FeatureConfig.DEFAULT)
-                    .decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(100)));
+    public static final ConfiguredFeature<?, ?> TOTEM_FEATURE_CONFIGURED = TOTEM_FEATURE.configure(FeatureConfig.DEFAULT);
+    public static final PlacedFeature TOTEM_PLACED_FEATURE = TOTEM_FEATURE_CONFIGURED.withPlacement(RarityFilterPlacementModifier.of(100), SquarePlacementModifier.of(), BiomePlacementModifier.of());
 
     public static BlockEntityType<TotemBlockEntity> TOTEM_BLOCK_ENTITY;
     public static StatusEffect LOOTING;
@@ -38,9 +35,11 @@ public class TotemMod implements ModInitializer {
     @Override
     public void onInitialize() {
         RegistryKey<ConfiguredFeature<?, ?>> totemFeatureRegistryKey = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("totemmod", "wither_skeleton_totem"));
+        RegistryKey<PlacedFeature> totemPlacedFeatureRegistryKey = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("totemmod", "wither_skeleton_totem"));
         Registry.register(Registry.FEATURE, new Identifier("totemmod", "totem"), TOTEM_FEATURE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, totemFeatureRegistryKey.getValue(), TOTEM_FEATURE_CONFIGURED);
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.SURFACE_STRUCTURES, totemFeatureRegistryKey);
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, totemPlacedFeatureRegistryKey.getValue(), TOTEM_PLACED_FEATURE);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.SURFACE_STRUCTURES, totemPlacedFeatureRegistryKey);
 
         Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_base"), TOTEM_BASE);
         Registry.register(Registry.BLOCK, new Identifier("totemmod", "totem_top"), TOTEM_TOP);
