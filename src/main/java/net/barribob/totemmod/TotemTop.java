@@ -14,7 +14,6 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Formatting;
@@ -78,7 +77,7 @@ public class TotemTop extends BlockWithEntity {
     }
 
     @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, net.minecraft.util.math.random.Random random) {
         if (world.getBlockState(pos).get(TRIGGERED)) {
             world.addParticle(new DustParticleEffect(new Vec3f(0.65f + 0.25f * random.nextFloat(), 0, 0), 1.0F),
                     pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat(), pos.getZ() + random.nextFloat(),
@@ -108,9 +107,9 @@ public class TotemTop extends BlockWithEntity {
 
     @Override
     public void appendTooltip(ItemStack stack, BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(new TranslatableText("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
-        tooltip.add(new TranslatableText("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
-        tooltip.add(new TranslatableText("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("block.totemmod.tooltip_1").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("block.totemmod.tooltip_2").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("block.totemmod.tooltip_3").formatted(Formatting.GRAY));
         super.appendTooltip(stack, world, tooltip, options);
     }
 
