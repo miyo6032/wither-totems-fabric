@@ -19,15 +19,14 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.List;
-import java.util.Random;
 
 public class TotemTop extends BlockWithEntity {
     public static final BooleanProperty TRIGGERED = Properties.TRIGGERED;
@@ -79,7 +78,7 @@ public class TotemTop extends BlockWithEntity {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, net.minecraft.util.math.random.Random random) {
         if (world.getBlockState(pos).get(TRIGGERED)) {
-            world.addParticle(new DustParticleEffect(new Vec3f(0.65f + 0.25f * random.nextFloat(), 0, 0), 1.0F),
+            world.addParticle(new DustParticleEffect(new Vector3f(0.65f + 0.25f * random.nextFloat(), 0, 0), 1.0F),
                     pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat(), pos.getZ() + random.nextFloat(),
                     0.0D, 0.0D, 0.0D);
         }
