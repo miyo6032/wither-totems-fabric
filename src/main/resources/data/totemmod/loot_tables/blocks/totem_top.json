@@ -6,7 +6,16 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "totemmod:totem_top"
+          "name": "totemmod:totem_top",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "totemmod:totem_top",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
         }
       ],
       "conditions": [

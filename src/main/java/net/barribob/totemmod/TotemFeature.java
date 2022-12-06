@@ -1,6 +1,7 @@
 package net.barribob.totemmod;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.TallPlantBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
@@ -42,8 +43,7 @@ public class TotemFeature extends Feature<DefaultFeatureConfig> {
             dir = dir.rotateYClockwise();
         }
 
-        world.setBlockState(pos.up(), TotemMod.TOTEM_TOP.getDefaultState().with(TotemTop.FACING, dir).with(TotemTop.TRIGGERED, Boolean.TRUE), 0);
-        world.setBlockState(pos, TotemMod.TOTEM_BASE.getDefaultState(), 0);
+        TallPlantBlock.placeAt(world, TotemMod.TOTEM_TOP.getDefaultState().with(TotemTop.FACING, dir), pos, 2);
         return true;
     }
 }

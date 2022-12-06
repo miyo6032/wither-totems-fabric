@@ -3,8 +3,8 @@
   "textures": {
     "3": "totemmod:block/eyes",
     "4": "totemmod:block/totem_top",
-    "5": "minecraft:entity/skeleton/wither_skeleton",
-    "particle": "minecraft:entity/skeleton/wither_skeleton"
+    "5": "totemmod:block/wither_skeleton",
+    "particle": "totemmod:block/wither_skeleton"
   },
   "elements": [
     {

@@ -25,10 +25,6 @@ public class TotemBlockEntity extends BlockEntity {
     public static void tick(World world, BlockPos pos, BlockState state, TotemBlockEntity entity) {
         if(world.isClient) return;
 
-        if (!entity.getCachedState().get(TotemTop.TRIGGERED)) {
-            return;
-        }
-
         if (entity.tickCounter % 20 != 0) {
             entity.tickCounter--;
             return;
