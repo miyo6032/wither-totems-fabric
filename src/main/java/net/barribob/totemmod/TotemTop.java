@@ -116,7 +116,7 @@ public class TotemTop extends BlockWithEntity {
         BlockPos blockPos = ctx.getBlockPos();
         World world = ctx.getWorld();
         if (blockPos.getY() < world.getTopY() - 1 && world.getBlockState(blockPos.up()).canReplace(ctx)) {
-            return getDefaultState().with(FACING, ctx.getPlayerFacing());
+            return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
         }
         return null;
     }
